@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -25,16 +25,28 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.right * speed * Time.deltaTime * hInput);
 
         if (transform.position.x < -boundsX) {
-            transform.position = new Vector3(-boundsX, transform.position.y, transform.position.z);
+            transform.position = new Vector3(
+                -boundsX,
+                transform.position.y,
+                transform.position.z
+                );
         }
         else if (transform.position.x > boundsX) {
-            transform.position = new Vector3(boundsX, transform.position.y, transform.position.z);
+            transform.position = new Vector3(
+                boundsX,
+                transform.position.y,
+                transform.position.z
+                );
         }
 
         // spawn food
         if (Input.GetKeyDown(KeyCode.Space) && foodPrefab != null) {
             //Instantiate(foodPrefab, transform.position, Quaternion.identity); //this will always spawn the object with the rotation set to (0, 0, 0)
-            Instantiate(foodPrefab, transform.position, foodPrefab.transform.rotation); //this will always spawn the object with the rotation as set up in the prefab!
+            Instantiate(
+                foodPrefab,
+                transform.position,
+                foodPrefab.transform.rotation
+                ); //this will always spawn the object with the rotation as set up in the prefab!
         }
     }
 }
